@@ -11,8 +11,11 @@
     <div class="row">
         <div class="col-sm-3">
             <div class="form-group">
-                <select id="users-select" class="custom-select">
-                    <option>Choose age</option>
+                <select id="mySelect" onchange="fun1()">
+                    <option value="-1">Choose age</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
                 </select>
             </div>
         </div>
@@ -33,9 +36,9 @@
 
 <select>
     <option value="-1">Choose age</option>
-    <option value="20">20</option>
-    <option value="30">30</option>
-    <option value="40">40</option>
+    <option value="John">20</option>
+    <option value="Sasha">30</option>
+    <option value="Rachel">40</option>
 </select>
 
 
@@ -61,6 +64,12 @@ let users = [
  {id: 9, name: "Willy", age: "20"}
 ]
 
+function fun1() {
+    var sel=document.getElementById('mySelect').selectedIndex;
+    var options=document.getElementById('mySelect').options;
+    document.getElementById("options").innerHTML = res;
+    
+}
 </script>
 
 
