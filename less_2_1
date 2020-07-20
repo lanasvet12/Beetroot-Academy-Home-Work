@@ -51,8 +51,10 @@
           els = list.getElementsByTagName("li");
 
         for (var i = 0, len = els.length; i < len; i++) {
+        if(parent.children[i] == target) {
+        alert('Это элемент номер - '+i);
           els[i].onclick = function() {
-            alert(i);
+           };
           };
         }
       </script>
