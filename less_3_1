@@ -1,9 +1,16 @@
-/*  Начальные 3 цифры в каждом номере - это код оператора
- Сделать вывод  в консоль таким
-(063) 111 1234
-(333) 456 8768
-(444) 657 5547
-*/
 let st = `063-111-1234
 (333) 456-8768
 4446575547`;
+
+function phone(name) {
+    "use strict";
+    var r = /([0-9])+/g, arr = name.match(r), res, str = arr.join('');
+    if (name.substr(0, 1) === '+') {
+            res = "+" + str;
+    } else if (str.substr(0, 1) === '8') {
+            res = "+7" + str.substr(1);
+    } else {
+            res = str;
+    }
+    return res;
+}
