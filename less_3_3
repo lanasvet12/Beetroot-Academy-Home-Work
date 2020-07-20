@@ -1,17 +1,22 @@
-/* 
-Код работает, но не защищен - клментский код может удалить элементы массива  из-вне
-Исправить этот недостаток 
-*/
 
 function getUsers() {
-  const users = ["Bill"];
+  const  _users = ["Bill"];
+  
+  set users(value) {
+    if (value < 0) throw new Error("Отрицательное количество");
+    this._users = value;
+  }
+
+  get users() {
+    return this._users;
+  }
   return {
     addUser: function(name) {
-      users.push(name);
-      return users;
+       _users.push(name);
+      return  _users;
     },
     getUsers: function() {
-      return users;
+      return  _users;
     }
   };
 }
