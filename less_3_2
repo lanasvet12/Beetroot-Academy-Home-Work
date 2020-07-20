@@ -14,12 +14,12 @@
     <h1 id="out" class="out">Javascript is exelent languare.<br>We like to learn javascript.</h1>
     <input id="btn" class="btn btn-primary" type="button" value="Click me">
 </div>
-<!-- 
-    Заменить словосочетание javascript в параграфе  на JAVASCRIPT.
--->
 <script>
-
-
+function change(){
+            document.getElementById("out").innerHTML=a;
+            let d = a.replace(/(?<![\p{L}\p{Nd}\p{Pc}])javascript(?![\p{L}\p{Nd}\p{Pc}])/giu, "JAVASCRIPT");
+            return document.getElementById("out").innerHTML=d;
+        }
 
 </script>
 
