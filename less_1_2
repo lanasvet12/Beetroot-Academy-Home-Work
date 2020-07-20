@@ -13,9 +13,9 @@
             <div class="form-group">
                 <select id="mySelect" onchange="fun1()">
                     <option value="-1">Choose age</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="40">40</option>
+                    <option value="John">20</option>
+                    <option value="Sasha">30</option>
+                    <option value="Rachel">40</option>
                 </select>
             </div>
         </div>
@@ -27,27 +27,6 @@
 
 </div>
 <script>
-
- /*
-1.  В элемент select вывести сгруппированный возраст
-    пользователей
-То есть у нас 9 пользователей и их возраст 20, 30, 40
-Элемент select должен получится таким
-
-<select>
-    <option value="-1">Choose age</option>
-    <option value="John">20</option>
-    <option value="Sasha">30</option>
-    <option value="Rachel">40</option>
-</select>
-
-
-2. При выборе соответствующего option осуществить вывод
-    пользователей соответствующих выбранному возрасту
-    в элемент <div id="res"></div>
-То есть при выборе например 20 должны вывестись  John, Ashley, Willy
-*/
-
 
 const usersSelect = document.getElementById('users-select')
 const res = document.getElementById('res')
