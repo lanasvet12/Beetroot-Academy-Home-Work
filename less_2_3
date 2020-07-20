@@ -8,21 +8,32 @@
     <h2>Work 3</h2>
 
     <script>
-      /*
-       * Создать функцию filter(arr, fn), которая
-       *  - принимает в качестве аргументов массив arr и функцию fn
-       *  - возвращает новый массив, который содержит только те элементы arr,  для которых fn возвращает true.
-       */
-
+     
       const arr = [11, 66, 33, 44, 22, 55, 2];
 
       function filter(arr, fn) {
-        // to do
+      
+        var result = [];
+  for(var i = 0; i < arr.length; i++) {
+    var val  = arr[i];
+    if (func(val)) {
+      result.push(val);
+    }
+  }
+  return result;
+}
+
+var arr = [1, 2, 3, 4, 5, 6, 7];
+
+alert( filter(arr, function(a) { return a % 2 == 0; }) ); // 2, 4, 6
       }
 
-      // Проверка - вернуть массив с элементами значение которых больше 50
+     
       const filteredArr = filter(arr, function (item) {
-        // to do
+       return function(x) {
+        return x >=50;
+         };
+       }      
       });
 
       console.log(filteredArr); //   [66, 55]]
