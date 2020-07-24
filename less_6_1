@@ -43,3 +43,59 @@
       </form>
       <div id="result" class="result"></div>
     </div>
+    
+    
+    <style>
+    html,body {
+        font-family: monospace;
+        box-sizing: border-box;
+      }
+      .wrapper, .group {
+        display: flex;
+      }
+      .field {
+        margin: 10px 5px;
+      }
+      input, textarea {
+        width: 100%;
+      }
+      label + br {
+        display: none;
+      }
+      label {
+        display: block;
+      }
+      .result {
+        padding: 5px;
+        overflow: auto;
+      }
+      .error {
+        background-color: rgba(255,0,0,.1);
+      }
+      .success {
+        background-color: rgba(0,255,0,.1);
+      }
+      </style>
+      <js>
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: 'title=' + encodeURIComponent('Заголовок') +
+        '&body=' + encodeURIComponent('Текст статьи')
+}).then(function (response) {
+  // API вернул результат
+  if (response.ok) {
+    return response.json();
+  } else {
+    console.log('Это не 200OK')
+    return Promise.reject(response);
+  }
+}).then(function (data) {
+  // Это уже JSON
+  console.log(data);
+}).catch(function (err) {
+  // Что-то пошло не так
+  console.warn('Ошибка получения.');
+  console.log(err);
+});
+      </js>
+      
