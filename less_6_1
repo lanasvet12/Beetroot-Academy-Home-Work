@@ -1,101 +1,19 @@
-<div class="wrapper">
-      <form>
-        <div class="field">
-          <label for="url">URL для запроса</label><br>
-          <input type="text" value="" id="url" name="url" placeholder="Введите URL" />
-        </div>
-        <div class="group">
-          <div class="field">
-            <label for="method">Метод</label><br>
-            <select id="method">
-              <option value="POST">POST</option>
-              <option value="GET">GET</option>
-              <option value="PUT">PUT</option>
-              <option value="OPTIONS">OPTIONS</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="mode">CORS mode</label><br>
-            <select id="mode">
-              <option value="no-cors">'no-cors' игнорируем cors</option>
-              <option value="cors">'cors' кроссдомен по умолчанию</option>
-              <option value="same-origin">'same-origin' только на свой домен</option>
-            </select>
-          </div>
-        </div>
-        <div class="field">
-          <label for="reqhead">Заголовки запроса</label><br>
-          <textarea rows="5" cols="30" id="reqhead">{
-  "Accept": "application/json",
-  "Content-Type": "application/json"
-}</textarea>
-        </div>
-        <div class="field">
-          <label for="reqbody">Тело запроса</label><br>
-          <textarea rows="5" cols="30" id="reqbody">{
-  "id": 123456,
-  "title": "заголовок"
-}</textarea>
-        </div>
-        <div class="field">
-          <button type="button" id="send">Отправить</button>
-        </div>
-      </form>
-      <div id="result" class="result"></div>
-    </div>
-    
-    
-    <style>
-    html,body {
-        font-family: monospace;
-        box-sizing: border-box;
+async function getUsers(names) {
+  const arr = []
+  for (let name of names) {
+    try {
+      let res = await fetch(`https://jsonplaceholder.typicode.com/users/${name}`)
+      if(!res.ok) {
+        throw new Error(`${name} of user not find`)
       }
-      .wrapper, .group {
-        display: flex;
-      }
-      .field {
-        margin: 10px 5px;
-      }
-      input, textarea {
-        width: 100%;
-      }
-      label + br {
-        display: none;
-      }
-      label {
-        display: block;
-      }
-      .result {
-        padding: 5px;
-        overflow: auto;
-      }
-      .error {
-        background-color: rgba(255,0,0,.1);
-      }
-      .success {
-        background-color: rgba(0,255,0,.1);
-      }
-      </style>
-      <js>
-      fetch('https://jsonplaceholder.typicode.com/posts', {
-  method: 'POST',
-  body: 'title=' + encodeURIComponent('Заголовок') +
-        '&body=' + encodeURIComponent('Текст статьи')
-}).then(function (response) {
-  // API вернул результат
-  if (response.ok) {
-    return response.json();
-  } else {
-    console.log('Это не 200OK')
-    return Promise.reject(response);
+      let user = await res.json()
+      arr.push(user)
+    } catch (e) {
+      console.log(e);
+    }
   }
-}).then(function (data) {
-  // Это уже JSON
-  console.log(data);
-}).catch(function (err) {
-  // Что-то пошло не так
-  console.warn('Ошибка получения.');
-  console.log(err);
-});
-      </js>
-      
+  return await Promise.all(arr)
+}
+getUsers([120,1,2,3,4,5,6,7,8,9]).then(r => {
+  console.log(r);
+})
